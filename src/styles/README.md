@@ -1,2 +1,0 @@
-# mui
-# css modules, tailwindcss
