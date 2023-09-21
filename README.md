@@ -77,22 +77,34 @@
 ## Descripción de estructura
 
 - \_**test\_**\: Centralización de test unitarios para todos los componentes y páginas del proyecto
-- **assets**: Carpeta que centraliza todos los assets que se utilizarán en el proyecto:
+- **src**: Lleva todo el código fuente de la aplicación
 
-  - **icons**:
-    - hornamentals: Con extensión **webp**. Tratamiento de la Imagen, [más información](https://nextjs.org/docs/pages/api-reference/components/image)
-    - Para el resto de iconos estos deben ser consumidos desde la libreria de componentes transversales
-  - **images**: Con extensión **webp**, deberán ser colocadas las imagenes que se encuentran en el repositorio que se ha entregado al squad
+  - **assets**: Carpeta que centraliza todos los assets que se utilizarán en el proyecto:
+    - **icons**:
+      - hornamentals: Con extensión **webp**. Tratamiento de la Imagen, [más información](https://nextjs.org/docs/pages/api-reference/components/image)
+      - Para el resto de iconos estos deben ser consumidos desde la libreria de componentes transversales
+    - **images**: Con extensión **webp**, deberán ser colocadas las imagenes que se encuentran en el repositorio que se ha entregado al squad
+  - **components**: Contiene todos la organización de componentes bajo [Atomic Design](https://adrianalonso.es/arquitectura-del-software/atomic-web-design-o-diseno-guiado-por-componentes/). Debe establecer file barrel. Para la construcción de hooks, servicios, constants o modelos de uso explusivo del componente, este debe ser generado bajo la estructura de `shared` dentro de la carpeta del componente.
 
-- src:
+    - **organisms**: Solo Componentes de orden organismo, es decir, que contiene una o mas moleculas y atomos.
+    - **sections**: Solo Componentes que contienen uno o mas componentes organisms, moleculas y atomos.
+    - **molecules**: Solo Componentes que contienen mas de un componente átomo.
+    - **atoms**: Componente mas pequeño en el orden establecido.
 
-  - components:
+  - **pages**: Cada carpeta contendrá el componente principal de la vista. El file index.tsx contendra la página root `'/'`, dejando los files \_app.tsx y \_document.tsx como archivos para configuración general del proyecto y rutas. En \_app.tsx se podrá wrappear la aplicación con los providers que afectaran a toda la aplicación. En el archivo \_document.tsx se podrá colocar la configuración SEO general de la aplicación.
 
-    - common: Componentes que utlizan los componentes de ui
-    - layout: Componentes genericos
-    - ui: Componentes reutilizables por otros componentes
+    - **api**: Cada carpeta contendrá literalmente el path del servicio que se consumirá.
 
-    * Nomenclatura en camelcase
+  - **shared**: Contiene metodos y funciones para el uso general de toda la aplicación.
+
+    - **constants**
+    - **i18n**: Contiene configuración y translates para el uso de toda la aplicación. Se requiere utilizar la misma estructura de components para agregar copys.
+      - config
+      - translates
+        - globals: Se requiere utilizar la misma disposición de orden de carpetas de components. Y utilizar archivos `en.ts` para traducciones inglés y `es.ts` para copys en español
+    - **models**: Contiene models que se utilizaran en toda la aplicación
+    - **services**: Cada carpeta contendrá literalmente el path del servicio que se consumirá
+    - **hooks**: Seguir la convención de creación de [hooks recomendada por Reactjs](https://react.dev/reference/react). Se requiere se generen hooks de utilización de toda la aplicación
 
   - core: Archivos que no cambian comunmente, tiene prioridad basica
 
