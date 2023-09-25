@@ -1,38 +1,107 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Proyecto Base para Squads de Producto
 
-## Getting Started
+## Stack Tecnológico
 
-First, run the development server:
+- Framework: Next.js v13.4.19
+- Biblioteca: React.js v18.2.0
+- Dependencias
+  - Test Unitarios
+    - Jest: v29.6.4
+    - React testing library: v14.0.0
+  - Typescript: v5.2.2
+  - Fetching de Datos
+    - Axios v1.5.0
+  - Manejo de estados globales y asincronía
+    - Zustand: v4.1.1
+    - Tanstack - React Query: v4.35.3
+  - Manejo de copys e internacionalización
+    - [i18next](https://react.i18next.com/): v23.5.1
+    - react-i18next: v13.2.2
+  - Linter de código:
+    - Eslint
+    - Prettier
+  - Componentes transversales de FD GFF
+    > Aquí debe ir la versión de librería publicada
+- Estilos
+  - [CSS modules](https://nextjs.org/docs/pages/building-your-application/styling/css-modules)
+  - [Material UI styles](https://mui.com/material-ui/customization/how-to-customize/)
+- Gestor de paquetes: Npm
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## Estructura de proyecto
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+./__test__
+  |_./components
+  | |_./organism
+  | |_./sections
+  | |_...
+  |_./pages
+./.vscode
+./public
+./src
+  |_./assets
+  | |_./icons
+  | |_./images
+  |_./components
+  | |_./organism
+  | |_./sections
+  | |_...
+  |_./pages
+  | |_./api
+  | |_...
+  | |_./_app.tsx
+  | |_./_document.tsx
+  | |_./index.tsx
+  |_./shared
+  | |_./constants
+  | |_./i18n
+  | | |_./config
+  | | |_./translates
+  | |   |_./feature_example
+  | |   | |_./en.ts
+  | |   | |_./es.ts
+  | |   | |_./index.ts
+  | |   |_...
+  | |   |_./index.ts
+  | |_./models
+  | |_./utils
+  | |_...
+  |_./styles
+  | |_./globals.css
+  | |_theme.ts
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Descripción de estructura
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- \_**test\_**\: Centralización de test unitarios para todos los componentes y páginas del proyecto
+- **src**: Lleva todo el código fuente de la aplicación
 
-## Learn More
+  - **assets**: Carpeta que centraliza todos los assets que se utilizarán en el proyecto:
+    - **icons**:
+      - hornamentals: Con extensión **webp**. Tratamiento de la Imagen, [más información](https://nextjs.org/docs/pages/api-reference/components/image)
+      - Para el resto de iconos estos deben ser consumidos desde la libreria de componentes transversales
+    - **images**: Con extensión **webp**, deberán ser colocadas las imagenes que se encuentran en el repositorio que se ha entregado al squad
+  - **components**: Contiene todos la organización de componentes bajo [Atomic Design](https://adrianalonso.es/arquitectura-del-software/atomic-web-design-o-diseno-guiado-por-componentes/). Debe establecer file barrel. Para la construcción de hooks, servicios, constants o modelos de uso explusivo del componente, este debe ser generado bajo la estructura de `shared` dentro de la carpeta del componente.
 
-To learn more about Next.js, take a look at the following resources:
+    - **organisms**: Solo Componentes de orden organismo, es decir, que contiene una o mas moleculas y atomos.
+    - **sections**: Solo Componentes que contienen uno o mas componentes organisms, moleculas y atomos.
+    - **molecules**: Solo Componentes que contienen mas de un componente átomo.
+    - **atoms**: Componente mas pequeño en el orden establecido.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  - **pages**: Cada carpeta contendrá el componente principal de la vista. El file index.tsx contendra la página root `'/'`, dejando los files \_app.tsx y \_document.tsx como archivos para configuración general del proyecto y rutas. En \_app.tsx se podrá wrappear la aplicación con los providers que afectaran a toda la aplicación. En el archivo \_document.tsx se podrá colocar la configuración SEO general de la aplicación.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    - **api**: Cada carpeta contendrá literalmente el path del servicio que se consumirá.
 
-## Deploy on Vercel
+  - **shared**: Contiene metodos y funciones para el uso general de toda la aplicación.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    - **constants**
+    - **i18n**: Contiene configuración y translates para el uso de toda la aplicación. Se requiere utilizar la misma estructura de components para agregar copys.
+      - config
+      - translates
+        - globals: Se requiere utilizar la misma disposición de orden de carpetas de components. Y utilizar archivos `en.ts` para traducciones inglés y `es.ts` para copys en español
+    - **models**: Contiene models que se utilizaran en toda la aplicación
+    - **services**: Cada carpeta contendrá literalmente el path del servicio que se consumirá
+    - **hooks**: Seguir la convención de creación de [hooks recomendada por Reactjs](https://react.dev/reference/react). Se requiere se generen hooks de utilización de toda la aplicación
