@@ -1,16 +1,11 @@
-import { type QueryFunctionContext, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
-import api from '@shared/services';
-import { type Data } from '@shared/models/DataApi';
+import fetchExample from '@shared/services/example-service/example-service';
 
-const fetchExample = async (ctx: QueryFunctionContext) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, argExample] = ctx.queryKey;
-  const { data } = await api.get<Data[]>(`/example-service/${argExample}`);
-
-  return data;
-};
-
-export const useFetchRepositories = (argExample: string) => {
+/**
+ * Consumo de fetch se hace solo usando este hook en el componente
+ * que se requiera
+ */
+export const useFetchExample = (argExample: string) => {
   return useQuery(['example-fetch', argExample], fetchExample);
 };
