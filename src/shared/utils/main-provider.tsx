@@ -3,8 +3,8 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import { i18nInit } from '@shared/i18n/config/i18n';
-import lightTheme from 'src/styles/theme';
 import queryClient from './queryClient';
+import lightTheme from '@styles/theme';
 // import './../styles/index.css';
 
 const MainProvider = ({ children }: { children: React.ReactNode }) => {

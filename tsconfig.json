@@ -20,9 +20,10 @@
       "@assets/*": ["src/assets/*"],
       "@shared/*": ["src/shared/*"],
       "@services/*": ["src/shared/*"],
-      "@store/*": ["src/store/*"]
+      "@store/*": ["src/store/*"],
+      "@styles/*": ["src/styles/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.*js"],
   "exclude": ["node_modules"]
 }

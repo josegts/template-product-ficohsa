@@ -19,5 +19,6 @@
     "typescriptreact"
   ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "typescript.validate.enable": true
+  "typescript.validate.enable": true,
+  "liveServer.settings.port": 5501
 }
