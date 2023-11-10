@@ -1,7 +1,6 @@
 import { Typography } from '@mui/material';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useEffect } from 'react';
 import { Trans } from 'react-i18next';
 
 const Home = () => {
@@ -25,16 +24,19 @@ const Home = () => {
     ['todos'],
     async () => await axios.get('/api/todos')
   );
-
-  console.log(data?.data?.data);
-
   return (
     <div>
       <Typography variant='h1'>
         <Trans i18nKey='featureExample.titleExample' />
       </Typography>
+      <Typography variant='h2'>
+        <Trans i18nKey='featureExample.subtitleExample' />
+      </Typography>
+      <Typography>Fetch with tanstack query</Typography>
       {data?.data?.data?.map((todo: any) => (
-        <div key={todo.id}>{todo.name}</div>
+        <Typography variant='h4' key={todo.id}>
+          {todo.name}
+        </Typography>
       ))}
     </div>
   );

@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3001",
-    "build": "cross-env NODE_OPTIONS='--max-old-space-size=16384' next build",
+    "dev": "next dev",
+    "build": "NODE_OPTIONS='--max-old-space-size=16384' next build",
     "build:develop": "cross-env NODE_OPTIONS='--max-old-space-size=16384' LICENSE_FACEPHI=#{SELPHIDLICENSEKEYDEV}# next build",
     "build:release": "cross-env NODE_OPTIONS='--max-old-space-size=16384' LICENSE_FACEPHI=#{SELPHIDLICENSEKEYSTG}# next build",
     "build:uat": "cross-env NODE_OPTIONS='--max-old-space-size=16384' LICENSE_FACEPHI=#{SELPHIDLICENSEKEYSTG}# next build",
     "build:master": "cross-env NODE_OPTIONS='--max-old-space-size=16384' LICENSE_FACEPHI=#{SELPHIDLICENSEKEYPRD}# next build",
-    "start": "node_modules/next/dist/bin/next start -p 3001",
+    "start": "node_modules/next/dist/bin/next start",
     "lint": "next lint",
     "test": "jest --coverage",
     "resource": "facephi-sdk-web resources"

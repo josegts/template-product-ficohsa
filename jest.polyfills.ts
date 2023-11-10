@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 // --- START of unnecessary polyfills
 /**
  * @note The block below contains polyfills for Node.js globals
@@ -8,8 +9,8 @@
  * Consider migrating to a more modern test runner if
  * you don't want to deal with this.
  */
-
-const { TextDecoder, TextEncoder } = require('node:util');
+import { TextDecoder, TextEncoder } from 'util';
+// const { TextDecoder, TextEncoder } = require('node:util');
 
 Object.defineProperties(globalThis, {
   TextDecoder: { value: TextDecoder },

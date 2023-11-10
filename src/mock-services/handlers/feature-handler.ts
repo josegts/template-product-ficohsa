@@ -5,13 +5,16 @@ export const handlersFeature = [
   http.get('/api/todos', () => {
     // And respond with a "text/plain" response
     // with a "Hello world!" text response body.
-    return Response.json({
-      data: {
+    return Response.json(
+      {
         data: [
-          { id: 1, title: 'John Doe mock' },
-          { id: 2, title: 'Jane Doe mock' },
+          { id: 1, name: 'John Doe mock' },
+          { id: 2, name: 'Jane Doe mock' },
         ],
       },
-    });
+      {
+        status: 200,
+      }
+    );
   }),
 ];
