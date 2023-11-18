@@ -1,19 +1,16 @@
-import { StyledEngineProvider, ThemeProvider } from '@mui/material';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import { i18nInit } from '@shared/i18n/config/i18n';
 import queryClient from './queryClient';
-import lightTheme from '@styles/theme';
+import { TrnComponentsProvider } from '@josegts/ds-components';
 // import './../styles/index.css';
 
 const MainProvider = ({ children }: { children: React.ReactNode }) => {
   i18nInit({ app: 'global', locale: 'es' });
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={lightTheme}>
-        <StyledEngineProvider injectFirst>{children}</StyledEngineProvider>
-      </ThemeProvider>
+      <TrnComponentsProvider>{children}</TrnComponentsProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

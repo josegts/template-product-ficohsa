@@ -19,9 +19,8 @@
     "registry": "https://npm.pkg.github.com/josegts"
   },
   "dependencies": {
-    "@emotion/react": "11.11.1",
-    "@emotion/styled": "11.11.0",
-    "@mui/material": "5.14.8",
+    "@josegts/ds-components": "^1.0.10",
+    "@mui/material": "^5.14.17",
     "@tanstack/react-query": "^4.36.1",
     "autoprefixer": "10.4.15",
     "axios": "1.5.0",

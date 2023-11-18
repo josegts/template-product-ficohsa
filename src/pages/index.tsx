@@ -1,3 +1,4 @@
+import { Button } from '@josegts/ds-components';
 import { Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -26,7 +27,8 @@ const Home = () => {
   );
   return (
     <div>
-      <Typography variant='h1'>
+      <Button variant='elevated'>Elevated</Button>
+      <Typography>
         <Trans i18nKey='featureExample.titleExample' />
       </Typography>
       <Typography variant='h2'>
