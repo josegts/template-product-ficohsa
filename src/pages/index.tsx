@@ -1,5 +1,4 @@
-import { Button } from '@josegts/ds-components';
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@josegts/ds-components';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { Trans } from 'react-i18next';
@@ -28,7 +27,7 @@ const Home = () => {
   return (
     <div>
       <Button variant='elevated'>Elevated</Button>
-      <Typography>
+      <Typography variant='h1'>
         <Trans i18nKey='featureExample.titleExample' />
       </Typography>
       <Typography variant='h2'>
@@ -36,9 +35,7 @@ const Home = () => {
       </Typography>
       <Typography>Fetch with tanstack query</Typography>
       {data?.data?.data?.map((todo: any) => (
-        <Typography variant='h4' key={todo.id}>
-          {todo.name}
-        </Typography>
+        <Typography key={todo.id}>{todo.name}</Typography>
       ))}
     </div>
   );
